@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 import {
   createBottomTabNavigator,
   createStackNavigator
-} from "react-navigation";
-import HomeScreen from "../screens/HomeScreen";
-import SectionScreen from "../screens/SectionScreen";
-import { Icon } from "expo";
-import CoursesScreen from "../screens/CoursesScreen";
-import ProjectsScreen from "../screens/ProjectsScreen";
-import VideoScreen from "../screens/VideoScreen";
+} from 'react-navigation';
+import HomeScreen from '../screens/HomeScreen';
+import SectionScreen from '../screens/SectionScreen';
+import { Icon } from 'expo';
+import CoursesScreen from '../screens/CoursesScreen';
+import ProjectsScreen from '../screens/ProjectsScreen';
+import VideoScreen from '../screens/VideoScreen';
 
-const activeColor = "#4775f2";
-const inactiveColor = "#b8bece";
+const activeColor = '#4775f2';
+const inactiveColor = '#b8bece';
 
 const HomeStack = createStackNavigator(
   {
@@ -20,7 +20,7 @@ const HomeStack = createStackNavigator(
     Video: VideoScreen
   },
   {
-    mode: "modal"
+    mode: 'modal'
   }
 );
 
@@ -28,13 +28,13 @@ HomeStack.navigationOptions = ({ navigation }) => {
   var tabBarVisible = true;
   const routeName = navigation.state.routes[navigation.state.index].routeName;
 
-  if (routeName == "Section" || routeName == "Video") {
+  if (routeName == 'Section' || routeName == 'Video') {
     tabBarVisible = false;
   }
 
   return {
     tabBarVisible,
-    tabBarLabel: "Home",
+    tabBarLabel: 'Home',
     tabBarIcon: ({ focused }) => (
       <Icon.Ionicons
         name="ios-home"
@@ -50,7 +50,7 @@ const CoursesStack = createStackNavigator({
 });
 
 CoursesStack.navigationOptions = {
-  tabBarLabel: "Courses",
+  tabBarLabel: 'Courses',
   tabBarIcon: ({ focused }) => (
     <Icon.Ionicons
       name="ios-albums"
@@ -65,7 +65,7 @@ const ProjectsStack = createStackNavigator({
 });
 
 ProjectsStack.navigationOptions = {
-  tabBarLabel: "Projects",
+  tabBarLabel: 'Projects',
   tabBarIcon: ({ focused }) => (
     <Icon.Ionicons
       name="ios-folder"
@@ -76,9 +76,9 @@ ProjectsStack.navigationOptions = {
 };
 
 const TabNavigator = createBottomTabNavigator({
+  ProjectsStack,
   HomeStack,
-  CoursesStack,
-  ProjectsStack
+  CoursesStack
 });
 
 export default TabNavigator;
